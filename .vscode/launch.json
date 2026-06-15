@@ -40,6 +40,22 @@
             "smartStep": true,
             "runtimeArgs": ["--disable-web-security"],
             "__comment": "Attaches Chrome DevTools debugger to Vite dev server. Requires Vite running on :5173. Breakpoints work in frontend/src/ TypeScript and JavaScript files."
+        },
+        {
+            "name": "Debug Frontend (ChromeHeadless)",
+            "type": "pwa-chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/frontend/src",
+            "sourceMaps": true,
+            "smartStep": true,
+            "runtimeArgs": [
+                "--headless=new",
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-web-security"
+            ],
+            "__comment": "Headless Chrome for Ubuntu/server/CI environments without a display. Breakpoints work in frontend/src/ TypeScript and JavaScript files. Use --no-sandbox when running as root or in containers."
         }
     ]
 }
