@@ -1,0 +1,21 @@
+services:
+  daedalus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: daedalus:latest
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      - PORT=${PORT:-8080}
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M

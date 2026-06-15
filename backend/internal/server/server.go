@@ -25,17 +25,7 @@ func New(addr string) *http.Server {
 	distPath := filepath.Join("..", "..", "frontend", "dist")
 	if _, err := os.Stat(distPath); err == nil {
 		fileServer := http.FileServer(http.Dir(distPath))
-		mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-			// Only serve static files for paths that are not API routes
-			// and are not the root path (which is handled by API routes).
-			if r.URL.Path != "/" && !startsWith(r.URL.Path, "/api/") {
-				fileServer.ServeHTTP(w, r)
-				return
-			}
-			// Delegate to the mux for API and root routes.
-			h, _ := mux.Handler(r)
-			h.ServeHTTP(w, r)
-		})
+		mux.Handle("/", fileServer)
 	}
 
 	return &http.Server{
