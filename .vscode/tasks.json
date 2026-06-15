@@ -1,0 +1,57 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Backend: Delve Debug",
+            "type": "shell",
+            "command": "dlv debug --listen=:40000 --headless --api-version=2 --accept-multiclient --continue ./backend/cmd/daedalus/main.go",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared",
+                "group": "debug"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Frontend: Vite Dev",
+            "type": "shell",
+            "command": "npm run dev",
+            "options": {
+              
+                "cwd": "${workspaceFolder}/frontend"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared",
+                "group": "debug"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Dev: Start All",
+            "type": "shell",
+            "command": "echo 'Starting backend and frontend...'",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "dependsOn": ["Backend: Delve Debug", "Frontend: Vite Dev"]
+        }
+    ]
+}

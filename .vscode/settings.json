@@ -1,0 +1,26 @@
+{
+    "makefile.configureOnOpen": false,
+
+    // --- Go / Delve ---
+    "go.delveConfig": {
+        "showGlobalVariables": true,
+        "traceLevel": "none"
+    },
+    "go.useLanguageServer": true,
+
+    // --- Go formatting ---
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+
+    // --- TypeScript / JavaScript formatting ---
+    "[typescript]": {
+        "editor.formatOnSave": true
+    },
+    "[javascript]": {
+        "editor.formatOnSave": true
+    }
+}
