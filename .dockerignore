@@ -1,0 +1,33 @@
+# ── Version control ───────────────────────────────────────────────
+.git
+.gitignore
+
+# ── Build artifacts (avoid polluting context) ────────────────────
+node_modules
+frontend/dist
+*.exe
+*.test
+
+# ── Documentation (not needed at build time) ─────────────────────
+*.md
+docs/
+
+# ── Task / project metadata ──────────────────────────────────────
+.tasks/
+
+# ── Local environment files (never ship secrets) ─────────────────
+.env
+.env.*
+.env.local
+.env.production
+
+# ── Editor / IDE ─────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
