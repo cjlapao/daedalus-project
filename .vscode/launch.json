@@ -5,9 +5,9 @@
             "name": "Run Backend",
             "type": "go",
             "request": "launch",
-            "mode": "debug",
-            "program": "${workspaceFolder}/backend/cmd/daedalus/main.go",
-            "cwd": "${workspaceFolder}/bin",
+            "mode": "auto",
+            "program": "${workspaceFolder}/backend/cmd/daedalus",
+            "cwd": "${workspaceFolder}/backend",
             "env": {
                 "PORT": "8080"
             },
@@ -24,7 +24,7 @@
         },
         {
             "name": "Debug Frontend (Chrome)",
-            "type": "chrome",
+            "type": "pwa-chrome",
             "request": "launch",
             "url": "http://localhost:5173",
             "webRoot": "${workspaceFolder}/frontend/src",
@@ -34,11 +34,13 @@
                 "<node_internals>/internal/**"
             ],
             "smartStep": true,
-            "runtimeArgs": ["--disable-web-security"]
+            "runtimeArgs": [
+                "--disable-web-security"
+            ]
         },
         {
             "name": "Debug Frontend (ChromeHeadless)",
-            "type": "chrome",
+            "type": "pwa-chrome",
             "request": "launch",
             "url": "http://localhost:5173",
             "webRoot": "${workspaceFolder}/frontend/src",
@@ -49,7 +51,8 @@
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
                 "--disable-web-security"
-            ]
+            ],
+            "path": "~/.var/app/com.google.Chrome/config/google-chrome/google-chrome"
         }
     ],
     "compounds": [
@@ -59,7 +62,7 @@
                 "Attach to Backend (Delve)",
                 "Debug Frontend (ChromeHeadless)"
             ],
-            "preLaunchTask": "Dev (Debug Mode)",
+            "preLaunchTask": "Dev: Start All",
             "presentation": {
                 "hidden": false,
                 "order": 1,

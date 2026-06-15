@@ -2,10 +2,43 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Dev (Debug Mode)",
+            "label": "Backend: Delve Debug",
             "type": "shell",
-            "command": "make dev",
-            "cwd": "${workspaceFolder}",
+            "command": "dlv debug --listen=:40000 --headless --api-version=2 --accept-multiclient --continue ./cmd/daedalus/",
+            "cwd": "${workspaceFolder}/backend",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared",
+                "group": "debug"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Frontend: Vite Dev",
+            "type": "shell",
+            "command": "npm run dev",
+            "cwd": "${workspaceFolder}/frontend",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared",
+                "group": "debug"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Dev: Start All",
+            "type": "shell",
+            "command": "echo 'Starting backend and frontend...'",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -15,7 +48,8 @@
             "group": {
                 "kind": "build",
                 "isDefault": false
-            }
+            },
+            "dependsOn": ["Backend: Delve Debug", "Frontend: Vite Dev"]
         }
     ]
 }
