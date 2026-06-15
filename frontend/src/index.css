@@ -1,0 +1,26 @@
+.app {
+  font-family: system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  background-color: #1a1a2e;
+  color: #eaeaea;
+}
+
+.app h1 {
+  margin-bottom: 1rem;
+}
+
+.app .status {
+  font-size: 1.25rem;
+  color: #7bed9f;
+}
+
+.app .error {
+  font-size: 1rem;
+  color: #ff6b6b;
+}
