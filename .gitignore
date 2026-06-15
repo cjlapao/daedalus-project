@@ -1,0 +1,33 @@
+# ── Go build artifacts ────────────────────────────────────────────────────────
+backend/**/daedalus
+backend/**/*.a
+backend/**/*.so
+backend/**/_test
+backend/**/*_test
+
+# Compiled binary at repo root (produced by `make build`)
+daedalus
+
+# ── Node.js / Frontend ────────────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/node_modules/
+
+# ── Editor / IDE ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Local environment files (never commit secrets) ────────────────────────────
+.env
+.env.*
+.env.local
+.env.production
+.env.development.local
+.env.test.local
