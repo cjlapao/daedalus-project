@@ -5,15 +5,13 @@
             "name": "Run Backend",
             "type": "go",
             "request": "launch",
-            "mode": "auto",
-            "program": "${workspaceFolder}/backend/cmd/daedalus",
-            "cwd": "${workspaceFolder}/backend",
+            "mode": "debug",
+            "program": "${workspaceFolder}/backend/cmd/daedalus/main.go",
+            "cwd": "${workspaceFolder}/bin",
             "env": {
                 "PORT": "8080"
             },
-            "args": [],
-            "console": "integratedTerminal",
-            "__comment": "Launches the Go backend directly. Use when you want the debugger to start the process. Alternatively, run `go run ./cmd/daedalus/` in a terminal and use the 'Attach to Backend (Delve)' config."
+            "args": []
         },
         {
             "name": "Attach to Backend (Delve)",
@@ -22,9 +20,7 @@
             "mode": "local",
             "port": 40000,
             "host": "127.0.0.1",
-            "cwd": "${workspaceFolder}/backend",
-            "dapDebuggerEnabled": true,
-            "__comment": "Attaches Delve to an already-running backend. Start the backend with: dlv debug ./cmd/daedalus/ --listen=:40000 --headless --api-version=2"
+            "cwd": "${workspaceFolder}/backend"
         },
         {
             "name": "Debug Frontend (Chrome)",
@@ -38,12 +34,11 @@
                 "<node_internals>/internal/**"
             ],
             "smartStep": true,
-            "runtimeArgs": ["--disable-web-security"],
-            "__comment": "Attaches Chrome DevTools debugger to Vite dev server. Requires Vite running on :5173. Breakpoints work in frontend/src/ TypeScript and JavaScript files."
+            "runtimeArgs": ["--disable-web-security"]
         },
         {
             "name": "Debug Frontend (ChromeHeadless)",
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
             "url": "http://localhost:5173",
             "webRoot": "${workspaceFolder}/frontend/src",
@@ -54,9 +49,22 @@
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
                 "--disable-web-security"
+            ]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Debug All (Backend + Frontend)",
+            "configurations": [
+                "Attach to Backend (Delve)",
+                "Debug Frontend (ChromeHeadless)"
             ],
-            "path": "~/.var/app/com.google.Chrome/config/google-chrome/google-chrome",
-            "__comment": "Headless Chrome for Ubuntu/server/CI environments without a display. Breakpoints work in frontend/src/ TypeScript and JavaScript files. Use --no-sandbox when running as root or in containers.\n\nChrome executable path: Flatpak (default) = ~/.var/app/com.google.Chrome/config/google-chrome/google-chrome\n  Debian/Ubuntu deb = /usr/bin/google-chrome-stable\nAdjust the path field if Chrome was installed via a different method."
+            "preLaunchTask": "Dev (Debug Mode)",
+            "presentation": {
+                "hidden": false,
+                "order": 1,
+                "group": "1_debug"
+            }
         }
     ]
 }
