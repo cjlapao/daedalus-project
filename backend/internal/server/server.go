@@ -49,7 +49,4 @@ func Shutdown(ctx context.Context, srv *http.Server) error {
 	return srv.Shutdown(ctx)
 }
 
-// startsWith reports whether the string s begins with prefix.
-func startsWith(s, prefix string) bool {
-	return len(s) >= len(prefix) && s[:len(prefix)] == prefix
-}
+
