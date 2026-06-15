@@ -1,0 +1,45 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Backend",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/backend",
+            "cwd": "${workspaceFolder}/backend",
+            "env": {
+                "PORT": "8080"
+            },
+            "args": [],
+            "console": "integratedTerminal",
+            "__comment": "Launches the Go backend directly. Use when you want the debugger to start the process. Alternatively, run `go run ./cmd/daedalus/` in a terminal and use the 'Attach to Backend (Delve)' config."
+        },
+        {
+            "name": "Attach to Backend (Delve)",
+            "type": "go",
+            "request": "attach",
+            "mode": "local",
+            "port": 40000,
+            "host": "127.0.0.1",
+            "cwd": "${workspaceFolder}/backend",
+            "dapDebuggerEnabled": true,
+            "__comment": "Attaches Delve to an already-running backend. Start the backend with: dlv debug ./cmd/daedalus/ --listen=:40000 --headless --api-version=2"
+        },
+        {
+            "name": "Debug Frontend (Chrome)",
+            "type": "pwa-chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/frontend/src",
+            "sourceMaps": true,
+            "skipFiles": [
+                "<node_internals>/**",
+                "<node_internals>/internal/**"
+            ],
+            "smartStep": true,
+            "runtimeArgs": ["--disable-web-security"],
+            "__comment": "Attaches Chrome DevTools debugger to Vite dev server. Requires Vite running on :5173. Breakpoints work in frontend/src/ TypeScript and JavaScript files."
+        }
+    ]
+}
