@@ -6,7 +6,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/backend",
+            "program": "${workspaceFolder}/backend/cmd/daedalus",
             "cwd": "${workspaceFolder}/backend",
             "env": {
                 "PORT": "8080"
@@ -28,7 +28,7 @@
         },
         {
             "name": "Debug Frontend (Chrome)",
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
             "url": "http://localhost:5173",
             "webRoot": "${workspaceFolder}/frontend/src",
