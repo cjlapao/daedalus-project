@@ -5,8 +5,8 @@
             "name": "Run Backend",
             "type": "go",
             "request": "launch",
-            "mode": "auto",
-            "program": "${workspaceFolder}/backend/cmd/daedalus",
+            "mode": "debug",
+            "program": "${workspaceFolder}/backend/cmd/daedalus/main.go",
             "cwd": "${workspaceFolder}/backend",
             "env": {
                 "PORT": "8080"
@@ -24,7 +24,7 @@
         },
         {
             "name": "Debug Frontend (Chrome)",
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
             "url": "http://localhost:5173",
             "webRoot": "${workspaceFolder}/frontend/src",
@@ -40,7 +40,7 @@
         },
         {
             "name": "Debug Frontend (ChromeHeadless)",
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
             "url": "http://localhost:5173",
             "webRoot": "${workspaceFolder}/frontend/src",
@@ -51,18 +51,17 @@
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
                 "--disable-web-security"
-            ],
-            "path": "~/.var/app/com.google.Chrome/config/google-chrome/google-chrome"
+            ]
         }
     ],
     "compounds": [
         {
             "name": "Debug All (Backend + Frontend)",
             "configurations": [
-                "Attach to Backend (Delve)",
-                "Debug Frontend (ChromeHeadless)"
+                "Run Backend",
+                "Debug Frontend (Chrome)"
             ],
-            "preLaunchTask": "Dev: Start All",
+            "preLaunchTask": "Frontend: Vite Dev",
             "presentation": {
                 "hidden": false,
                 "order": 1,

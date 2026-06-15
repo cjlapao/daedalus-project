@@ -4,8 +4,7 @@
         {
             "label": "Backend: Delve Debug",
             "type": "shell",
-            "command": "dlv debug --listen=:40000 --headless --api-version=2 --accept-multiclient --continue ./cmd/daedalus/",
-            "cwd": "${workspaceFolder}/backend",
+            "command": "dlv debug --listen=:40000 --headless --api-version=2 --accept-multiclient --continue ./backend/cmd/daedalus/main.go",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -22,7 +21,10 @@
             "label": "Frontend: Vite Dev",
             "type": "shell",
             "command": "npm run dev",
-            "cwd": "${workspaceFolder}/frontend",
+            "options": {
+              
+                "cwd": "${workspaceFolder}/frontend"
+            },
             "presentation": {
                 "echo": true,
                 "reveal": "always",
