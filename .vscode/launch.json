@@ -55,7 +55,8 @@
                 "--disable-setuid-sandbox",
                 "--disable-web-security"
             ],
-            "__comment": "Headless Chrome for Ubuntu/server/CI environments without a display. Breakpoints work in frontend/src/ TypeScript and JavaScript files. Use --no-sandbox when running as root or in containers."
+            "path": "~/.var/app/com.google.Chrome/config/google-chrome/google-chrome",
+            "__comment": "Headless Chrome for Ubuntu/server/CI environments without a display. Breakpoints work in frontend/src/ TypeScript and JavaScript files. Use --no-sandbox when running as root or in containers.\n\nChrome executable path: Flatpak (default) = ~/.var/app/com.google.Chrome/config/google-chrome/google-chrome\n  Debian/Ubuntu deb = /usr/bin/google-chrome-stable\nAdjust the path field if Chrome was installed via a different method."
         }
     ]
 }
