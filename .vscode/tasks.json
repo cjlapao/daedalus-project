@@ -4,7 +4,7 @@
         {
             "label": "Dev (Debug Mode)",
             "type": "shell",
-            "command": "./scripts/run-dev-debug.sh",
+            "command": "make dev",
             "cwd": "${workspaceFolder}",
             "presentation": {
                 "echo": true,
